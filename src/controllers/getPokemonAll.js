@@ -4,8 +4,9 @@ const { Pokemon, Type } = require("../db");
 const getPokemonAll = async (req, res)=>{     
     try {
         const pokApi = await getPokemonApi()
-        //const pokDb = await getPokemonDB()
-        return pokApi //.concat(pokDb)
+        const pokDb = await getPokemonDB()
+        const sumaPok = pokApi.concat(pokDb)
+        return sumaPok
     } catch (error) {
         res.status(400).json({error: error.messaje})
     }                           
